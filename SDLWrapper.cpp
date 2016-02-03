@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:37 2016 Erwan Dupard
-// Last update Wed Feb  3 03:00:31 2016 Erwan Dupard
+// Last update Wed Feb  3 12:13:56 2016 Erwan Dupard
 //
 
 #include "SDLWrapper.hh"
@@ -20,6 +20,7 @@ SDLWrapper::SDLWrapper()
       this->_renderer = SDL_CreateRenderer(this->_window, -1, 0);
       this->_cleanScreen();
     }
+  this->_feedFactories.push_back(new AppleFactory());
 }
 
 SDLWrapper::~SDLWrapper()
@@ -39,6 +40,7 @@ int		SDLWrapper::MainLoop()
   SDL_Event	e;
   bool		quit = false;
   Nibbler	nibbler;
+  AFeed		*feed = this->_generateFeed();
 
   while (!quit)
     {
@@ -57,6 +59,8 @@ int		SDLWrapper::MainLoop()
 		nibbler.changeDirection(Nibbler::UP);
 	      if (e.key.keysym.sym == SDLK_DOWN)
 		nibbler.changeDirection(Nibbler::DOWN);
+	      if (e.key.keysym.sym == SDLK_p)
+		this->_generateFeed();
 	      break;
 	    case SDL_QUIT:
 	      quit = true;
@@ -64,11 +68,22 @@ int		SDLWrapper::MainLoop()
 	    }
 	}
       nibbler.updateNibbler();
+      if (nibbler.getHead() == feed->getPosition())
+	nibbler.eatFeed(feed);
+      this->_drawFeed(feed);
       this->drawNibbler(nibbler);
       SDL_Delay(REFRESH_TIME);
       this->_cleanScreen();
     }
   return (0);
+}
+
+AFeed		*SDLWrapper::_generateFeed() const
+{
+  IFeedFactory	*factory;
+
+  factory = this->_feedFactories[std::rand() % this->_feedFactories.size()];
+  return (factory->create());
 }
 
 void		SDLWrapper::drawNibbler(const Nibbler &nib)
@@ -77,18 +92,31 @@ void		SDLWrapper::drawNibbler(const Nibbler &nib)
 
   while(it != nib.getNibbles().end())
     {
-      this->_drawRect((*it)->getX(), (*it)->getY());
+      this->_drawNibble((*it)->getX(), (*it)->getY());
       it++;
     }
 }
 
-void		SDLWrapper::_drawRect(int x, int y) const
+void		SDLWrapper::_drawNibble(int x, int y) const
 {
   SDL_Rect rect;
   
   SDL_SetRenderDrawColor(this->_renderer, 153, 102, 153, 0);
   rect.x = x * UNIT_SIZE;
   rect.y = y * UNIT_SIZE;
+  rect.w = UNIT_SIZE;
+  rect.h = UNIT_SIZE;
+  SDL_RenderFillRect(this->_renderer, &rect);
+  SDL_RenderPresent(this->_renderer);
+}
+
+void		SDLWrapper::_drawFeed(AFeed *feed) const
+{
+  SDL_Rect rect;
+  
+  SDL_SetRenderDrawColor(this->_renderer, 50, 50, 50, 0);
+  rect.x = feed->getPositionX() * UNIT_SIZE;
+  rect.y = feed->getPositionY() * UNIT_SIZE;
   rect.w = UNIT_SIZE;
   rect.h = UNIT_SIZE;
   SDL_RenderFillRect(this->_renderer, &rect);

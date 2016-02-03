@@ -5,13 +5,14 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:04:32 2016 Erwan Dupard
-// Last update Wed Feb  3 02:26:22 2016 Erwan Dupard
+// Last update Wed Feb  3 11:32:42 2016 Erwan Dupard
 //
 
 #ifndef NIBBLER_HH_
 # define NIBBLER_HH_
 
 # include <list>
+# include "AFeed.hh"
 # include "Vector.hh"
 # include "ressources.hh"
 
@@ -37,6 +38,7 @@ public:
   bool				isDead() const;
   const std::list<Vector *>	&getNibbles() const;
   void				dump() const;
+  void				eatFeed(AFeed *);
 private:
   void				_delNibble();
   void				_addQueuedNibble();

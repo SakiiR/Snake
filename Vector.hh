@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:06:36 2016 Erwan Dupard
-// Last update Wed Feb  3 01:54:23 2016 Erwan Dupard
+// Last update Wed Feb  3 12:15:16 2016 Erwan Dupard
 //
 
 #ifndef VECTOR_HH_
@@ -19,7 +19,6 @@ public:
   Vector(const Vector &);
 
   Vector	&operator=(const Vector &);
-  bool		operator==(const Vector &);
   int		getX() const;
   int		getY() const;
   void		setX(int);
@@ -28,5 +27,8 @@ private:
   int		_x;
   int		_y;
 };
+
+bool		operator==(const Vector &, const Vector &);
+
 
 #endif /* ! VECTOR_HH_ */

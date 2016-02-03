@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:05:49 2016 Erwan Dupard
-// Last update Wed Feb  3 02:54:23 2016 Erwan Dupard
+// Last update Wed Feb  3 12:22:10 2016 Erwan Dupard
 //
 
 #include "Nibbler.hh"
@@ -58,21 +58,25 @@ void					Nibbler::updateNibbler()
       it++;
     }
   if (this->_queuedNibbles > 0)
-    this->_nibbler.push_back(new Vector(*old));
-  this->dump();
+    {
+      this->_nibbler.push_back(new Vector(*old));
+      this->_queuedNibbles--;
+    }
+  std::cout << "SCORE : " << this->_nibbler.size() << std::endl;
 }
 
 void					Nibbler::changeLength(int n)
 {
   int					i;
   
-  i = -1;
-  while (++i < ABS(n)) // maybe bug here
+  i = 0;
+  while (i < ABS(n)) // maybe bug here
     {
       if (n < 0)
 	this->_delNibble();
-      else
+      else if (n > 0)
 	this->_queuedNibbles++;
+      ++i;
     }
 }
 
@@ -140,4 +144,10 @@ bool					Nibbler::isDead() const
 const std::list<Vector *>		&Nibbler::getNibbles() const
 {
   return (this->_nibbler);
+}
+
+void					Nibbler::eatFeed(AFeed *feed)
+{
+  this->changeLength(feed->getPower());
+  feed->regenPosition();
 }

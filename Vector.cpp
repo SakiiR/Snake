@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:08:37 2016 Erwan Dupard
-// Last update Wed Feb  3 01:56:07 2016 Erwan Dupard
+// Last update Wed Feb  3 12:16:00 2016 Erwan Dupard
 //
 
 #include "Vector.hh"
@@ -29,14 +29,6 @@ Vector		&Vector::operator=(const Vector &other)
   return (*this);
 }
 
-bool		Vector::operator==(const Vector &other)
-{
-  return (
-	  (this->getX() == other.getX()) && 
-	  (this->getY() == other.getY())
-	  );
-}
-
 int		Vector::getX() const
 {
   return (this->_x);
@@ -55,4 +47,9 @@ void		Vector::setX(int x)
 void		Vector::setY(int y)
 {
   this->_y = y;
+}
+
+bool		operator==(const Vector &a, const Vector &b)
+{
+  return ((a.getX() == b.getX()) && (a.getY() == b.getY()));
 }
