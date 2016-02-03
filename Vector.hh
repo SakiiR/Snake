@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:06:36 2016 Erwan Dupard
-// Last update Wed Feb  3 12:15:16 2016 Erwan Dupard
+// Last update Wed Feb  3 13:19:29 2016 Erwan Dupard
 //
 
 #ifndef VECTOR_HH_
@@ -23,6 +23,7 @@ public:
   int		getY() const;
   void		setX(int);
   void		setY(int);
+  void		dump() const;
 private:
   int		_x;
   int		_y;

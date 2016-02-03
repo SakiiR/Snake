@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:37 2016 Erwan Dupard
-// Last update Wed Feb  3 12:13:56 2016 Erwan Dupard
+// Last update Wed Feb  3 13:30:08 2016 Erwan Dupard
 //
 
 #include "SDLWrapper.hh"
@@ -88,7 +88,7 @@ AFeed		*SDLWrapper::_generateFeed() const
 
 void		SDLWrapper::drawNibbler(const Nibbler &nib)
 {
-  std::list<Vector *>::const_iterator it = nib.getNibbles().begin();
+  std::vector<Vector *>::const_iterator it = nib.getNibbles().begin();
 
   while(it != nib.getNibbles().end())
     {

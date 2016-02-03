@@ -5,13 +5,13 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:04:32 2016 Erwan Dupard
-// Last update Wed Feb  3 11:32:42 2016 Erwan Dupard
+// Last update Wed Feb  3 13:36:59 2016 Erwan Dupard
 //
 
 #ifndef NIBBLER_HH_
 # define NIBBLER_HH_
 
-# include <list>
+# include <vector>
 # include "AFeed.hh"
 # include "Vector.hh"
 # include "ressources.hh"
@@ -36,17 +36,17 @@ public:
   void				changeDirection(Direction);
   Direction			getDirection() const;
   bool				isDead() const;
-  const std::list<Vector *>	&getNibbles() const;
+  const std::vector<Vector *>	&getNibbles() const;
   void				dump() const;
   void				eatFeed(AFeed *);
 private:
   void				_delNibble();
   void				_addQueuedNibble();
-  void				_goRight(Vector *);
-  void				_goLeft(Vector *);
-  void				_goUp(Vector *);
-  void				_goDown(Vector *);
-  std::list<Vector *>		_nibbler;
+  void				_goRight(Vector &);
+  void				_goLeft(Vector &);
+  void				_goUp(Vector &);
+  void				_goDown(Vector &);
+  std::vector<Vector *>		_nibbler;
   Direction			_direction;
   int				_queuedNibbles;
   bool				_dead;
