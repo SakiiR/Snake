@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:01 2016 Erwan Dupard
-// Last update Tue Feb  2 17:55:26 2016 Erwan Dupard
+// Last update Wed Feb  3 01:08:06 2016 Erwan Dupard
 //
 
 #ifndef SDLWRAPPER_HH_
@@ -15,6 +15,11 @@
 
 # define WINDOW_SIZE_X			(800)
 # define WINDOW_SIZE_Y			(640)
+
+# define PIXEL_BLOCK			(10)
+
+# define GAME_WIDTH			(WINDOW_SIZE_X / PIXEL_BLOCK)
+# define GAME_HEIGHT			(WINDOW_SIZE_Y / PIXEL_BLOCK)
 
 # define WINDOW_NAME			("SakiiR's Nibbler ! SuckZ my C4T !")
 

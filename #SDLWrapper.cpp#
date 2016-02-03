@@ -42,6 +42,7 @@ int		SDLWrapper::MainLoop()
 {
   SDL_Event	e;
   bool		quit = false;
+  Nibbler
 
   while (!quit)
     {
