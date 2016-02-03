@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Wed Feb  3 02:03:27 2016 Erwan Dupard
-// Last update Wed Feb  3 23:58:30 2016 Erwan Dupard
+// Last update Thu Feb  4 00:29:12 2016 Erwan Dupard
 //
 
 #ifndef RESSOURCES_HH_
@@ -14,10 +14,10 @@
 # define WINDOW_WIDTH			(800)
 # define WINDOW_HEIGHT			(600)
 
-# define UNIT_SIZE			(10)
+# define UNIT_SIZE			(30)
 # define JUMP_SIZE			(1)
 
-# define REFRESH_TIME			(50)
+# define REFRESH_TIME			(500)
 
 # define GAME_WIDTH			(WINDOW_WIDTH / UNIT_SIZE)
 # define GAME_HEIGHT			(WINDOW_HEIGHT / UNIT_SIZE)

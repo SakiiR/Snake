@@ -5,15 +5,20 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:05:49 2016 Erwan Dupard
-// Last update Thu Feb  4 00:05:35 2016 Erwan Dupard
+// Last update Thu Feb  4 00:49:34 2016 Erwan Dupard
 //
 
 #include "Nibbler.hh"
 
 Nibbler::Nibbler() : _direction(RIGHT), _queuedNibbles(0), _dead(false)
 {
-  this->_nibbler.push_back(new Vector(GAME_WIDTH / 2 - 1, GAME_HEIGHT / 2));
+  int					headPosX = GAME_WIDTH / 2;
+  int					headPosY = GAME_HEIGHT / 2;
+
+  this->_nibbler.push_back(new Vector(headPosX, headPosY));
+  headPosX--;
   this->_nibbler.push_back(new Vector(GAME_WIDTH / 2, GAME_HEIGHT / 2));
+  headPosX--;
   this->_nibbler.push_back(new Vector(GAME_WIDTH / 2 + 1, GAME_HEIGHT / 2));
 }
 
@@ -44,7 +49,7 @@ void					Nibbler::dump() const
   std::cout << std::endl;
 }
 
-void					Nibbler::updateNibbler()
+int					Nibbler::updateNibbler()
 {
   Vector				old;
   Vector				tmp;
@@ -82,9 +87,11 @@ void					Nibbler::updateNibbler()
   if (this->_checkHead())
     {
       std::cout << "[-] You Lost with score " << this->_nibbler.size() << std::endl;
-      //game over
+      return (1);
     }
+  return(0);
 }
+
 
 int					Nibbler::_checkHead() const
 {

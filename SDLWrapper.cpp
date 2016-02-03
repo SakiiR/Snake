@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:37 2016 Erwan Dupard
-// Last update Thu Feb  4 00:23:08 2016 Erwan Dupard
+// Last update Thu Feb  4 00:44:30 2016 Erwan Dupard
 //
 
 #include "SDLWrapper.hh"
@@ -43,6 +43,11 @@ int		SDLWrapper::MainLoop()
   Nibbler	nibbler;
   AFeed		*feed = this->_generateFeed();
 
+  while (feed->getPosition() == nibbler.getHead())
+    {
+      delete feed;
+      feed = this->_generateFeed();
+    }
   while (!quit)
     {
       while (SDL_PollEvent(&e))
@@ -68,9 +73,17 @@ int		SDLWrapper::MainLoop()
 	      break;
 	    }
 	}
-      nibbler.updateNibbler();
+      if (nibbler.updateNibbler() == 1)
+	{
+	  delete feed;
+	  return (0);
+	}
       if (nibbler.getHead() == feed->getPosition())
-	nibbler.eatFeed(feed);
+	{
+	  nibbler.eatFeed(feed);
+	  delete feed;
+	  feed = this->_generateFeed();
+	}
       this->_drawFeed(feed);
       this->drawNibbler(nibbler);
       SDL_Delay(REFRESH_TIME);
