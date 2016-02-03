@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:11:21 2016 Erwan Dupard
-// Last update Wed Feb  3 12:12:18 2016 Erwan Dupard
+// Last update Thu Feb  4 00:13:42 2016 Erwan Dupard
 //
 
 #ifndef FEED_HH_
@@ -18,16 +18,22 @@
 class		AFeed
 {
 public:
-  AFeed(int power);
+  AFeed(int power, int r, int g, int b);
   ~AFeed();
   int		getPower() const;
   void		regenPosition() const;
   int		getPositionX() const;
   int		getPositionY() const;
+  int		getR() const;
+  int		getG() const;
+  int		getB() const;
   const Vector	&getPosition() const;
 private:
   int		_power;
   Vector	*_position;
+  int		_r;
+  int		_g;
+  int		_b;
 };
 
 #endif /* ! FEED_HH_ */

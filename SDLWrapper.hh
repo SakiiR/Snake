@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:01 2016 Erwan Dupard
-// Last update Wed Feb  3 12:10:00 2016 Erwan Dupard
+// Last update Thu Feb  4 00:23:27 2016 Erwan Dupard
 //
 
 #ifndef SDLWRAPPER_HH_
@@ -15,6 +15,7 @@
 # include "Nibbler.hh"
 # include "ressources.hh"
 # include "AppleFactory.hh"
+# include "KoalaFactory.hh"
 
 class		SDLWrapper
 {

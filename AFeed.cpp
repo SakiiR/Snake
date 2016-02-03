@@ -5,21 +5,18 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:14:15 2016 Erwan Dupard
-// Last update Wed Feb  3 12:12:45 2016 Erwan Dupard
+// Last update Thu Feb  4 00:14:51 2016 Erwan Dupard
 //
 
 #include "AFeed.hh"
 
-AFeed::AFeed(int power) : _power(power)
+AFeed::AFeed(int power, int r, int g, int b) : _power(power), _r(r), _g(g), _b(b)
 {
-  std::cout << "Popping Feed!" << std::endl;
   this->_position = new Vector(std::rand() % GAME_WIDTH, std::rand() % GAME_HEIGHT);
 }
 
 AFeed::~AFeed()
-{
-  std::cout << "Unpop Feed!" << std::endl;
-}
+{}
 
 int		AFeed::getPower() const
 {
@@ -45,4 +42,19 @@ int		AFeed::getPositionY() const
 const Vector	&AFeed::getPosition() const
 {
   return (*this->_position);
+}
+
+int		AFeed::getR() const
+{
+  return (this->_r);
+}
+
+int		AFeed::getG() const
+{
+  return (this->_g);
+}
+
+int		AFeed::getB() const
+{
+  return (this->_b);
 }

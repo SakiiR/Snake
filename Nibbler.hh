@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:04:32 2016 Erwan Dupard
-// Last update Wed Feb  3 13:36:59 2016 Erwan Dupard
+// Last update Thu Feb  4 00:02:14 2016 Erwan Dupard
 //
 
 #ifndef NIBBLER_HH_
@@ -40,6 +40,7 @@ public:
   void				dump() const;
   void				eatFeed(AFeed *);
 private:
+  int				_checkHead() const;
   void				_delNibble();
   void				_addQueuedNibble();
   void				_goRight(Vector &);

@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:37 2016 Erwan Dupard
-// Last update Wed Feb  3 13:30:08 2016 Erwan Dupard
+// Last update Thu Feb  4 00:23:08 2016 Erwan Dupard
 //
 
 #include "SDLWrapper.hh"
@@ -21,6 +21,7 @@ SDLWrapper::SDLWrapper()
       this->_cleanScreen();
     }
   this->_feedFactories.push_back(new AppleFactory());
+  this->_feedFactories.push_back(new KoalaFactory());
 }
 
 SDLWrapper::~SDLWrapper()
@@ -114,7 +115,7 @@ void		SDLWrapper::_drawFeed(AFeed *feed) const
 {
   SDL_Rect rect;
   
-  SDL_SetRenderDrawColor(this->_renderer, 50, 50, 50, 0);
+  SDL_SetRenderDrawColor(this->_renderer, feed->getR(), feed->getG(), feed->getB(), 0);
   rect.x = feed->getPositionX() * UNIT_SIZE;
   rect.y = feed->getPositionY() * UNIT_SIZE;
   rect.w = UNIT_SIZE;

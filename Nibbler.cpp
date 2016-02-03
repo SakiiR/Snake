@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:05:49 2016 Erwan Dupard
-// Last update Wed Feb  3 13:45:22 2016 Erwan Dupard
+// Last update Thu Feb  4 00:05:35 2016 Erwan Dupard
 //
 
 #include "Nibbler.hh"
@@ -46,7 +46,58 @@ void					Nibbler::dump() const
 
 void					Nibbler::updateNibbler()
 {
-  //todo lol c'est relou
+  Vector				old;
+  Vector				tmp;
+  size_t				i = 1;
+
+  old = *this->_nibbler[0];
+  switch (this->getDirection())
+    {
+    case RIGHT:
+      this->_goRight(*this->_nibbler[0]);
+      break;
+    case LEFT:
+      this->_goLeft(*this->_nibbler[0]);
+      break;
+    case DOWN:
+      this->_goDown(*this->_nibbler[0]);
+      break;
+    case UP:
+      this->_goUp(*this->_nibbler[0]);
+      break;
+    }
+  while (i < this->_nibbler.size())
+    {
+      tmp = *this->_nibbler[i];
+      this->_nibbler[i]->setX(old.getX());
+      this->_nibbler[i]->setY(old.getY());
+      old = tmp;
+      ++i;
+    }
+  if (this->_queuedNibbles > 0)
+    {
+      this->_nibbler.push_back(new Vector(old.getX(), old.getY()));
+      this->_queuedNibbles--;
+    }
+  if (this->_checkHead())
+    {
+      std::cout << "[-] You Lost with score " << this->_nibbler.size() << std::endl;
+      //game over
+    }
+}
+
+int					Nibbler::_checkHead() const
+{
+  const Vector				&head = this->getHead();
+  size_t				i = 1;
+
+  while (i < this->_nibbler.size())
+    {
+      if (head == *this->_nibbler[i])
+	return (1);
+      ++i;
+    }
+  return (0);
 }
 
 void					Nibbler::changeLength(int n)

@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Feb  2 17:25:34 2016 Erwan Dupard
-## Last update Wed Feb  3 11:46:45 2016 Erwan Dupard
+## Last update Thu Feb  4 00:17:35 2016 Erwan Dupard
 ##
 
 CC		= g++
@@ -23,6 +23,9 @@ SRCS		= SDLWrapper.cpp	\
 		  AFeed.cpp		\
 		  Apple.cpp		\
 		  AppleFactory.cpp	\
+		  Koala.cpp		\
+		  KoalaFactory.cpp	\
+
 
 OBJS		= $(SRCS:.cpp=.o)
 
