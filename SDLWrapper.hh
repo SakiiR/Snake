@@ -5,23 +5,15 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 17:26:01 2016 Erwan Dupard
-// Last update Wed Feb  3 01:08:06 2016 Erwan Dupard
+// Last update Wed Feb  3 02:31:32 2016 Erwan Dupard
 //
 
 #ifndef SDLWRAPPER_HH_
 # define SDLWRAPPER_HH_
 
 # include <SDL2/SDL.h>
-
-# define WINDOW_SIZE_X			(800)
-# define WINDOW_SIZE_Y			(640)
-
-# define PIXEL_BLOCK			(10)
-
-# define GAME_WIDTH			(WINDOW_SIZE_X / PIXEL_BLOCK)
-# define GAME_HEIGHT			(WINDOW_SIZE_Y / PIXEL_BLOCK)
-
-# define WINDOW_NAME			("SakiiR's Nibbler ! SuckZ my C4T !")
+# include "Nibbler.hh"
+# include "ressources.hh"
 
 class		SDLWrapper
 {
@@ -30,9 +22,12 @@ public:
   ~SDLWrapper();
   SDL_Window	*getWindow() const;
   int		MainLoop();
+  void		drawNibbler(const Nibbler &nib);
 private:
   SDL_Window	*_window;
   SDL_Renderer	*_renderer;
+  void		_drawRect(int x, int y) const;
+  void		_cleanScreen() const;
 };
 
 #endif /* ! SDLWRAPPER_HH_ */

@@ -5,7 +5,7 @@
 // Login   <dupard_e@epitech.net>
 // 
 // Started on  Tue Feb  2 18:04:32 2016 Erwan Dupard
-// Last update Wed Feb  3 01:26:37 2016 Erwan Dupard
+// Last update Wed Feb  3 02:26:22 2016 Erwan Dupard
 //
 
 #ifndef NIBBLER_HH_
@@ -13,14 +13,14 @@
 
 # include <list>
 # include "Vector.hh"
-# include "SDLWrapper.hh"
+# include "ressources.hh"
 
 # define ABS(c) ((c >= 0 ? c : -c))
 
-class			Nibbler
+class				Nibbler
 {
 public:
-  enum Direction
+  enum				Direction
     {
       LEFT,
       RIGHT,
@@ -29,17 +29,25 @@ public:
     };
   Nibbler();
   ~Nibbler();
-  void			updateNibbler();
-  void			changeLength(int);
-  const Vector		&getHead() const;
-  void			changeDirection(Direction);
-  Direction		getDirection() const;
+  void				updateNibbler();
+  void				changeLength(int);
+  const Vector			&getHead() const;
+  void				changeDirection(Direction);
+  Direction			getDirection() const;
+  bool				isDead() const;
+  const std::list<Vector *>	&getNibbles() const;
+  void				dump() const;
 private:
-  std::list<Vector *>	_nibbler;
-  Direction		_direction;
-  void			_delNibble();
-  void			_addQueuedNibble();
-  int			_queuedNibbles;
+  void				_delNibble();
+  void				_addQueuedNibble();
+  void				_goRight(Vector *);
+  void				_goLeft(Vector *);
+  void				_goUp(Vector *);
+  void				_goDown(Vector *);
+  std::list<Vector *>		_nibbler;
+  Direction			_direction;
+  int				_queuedNibbles;
+  bool				_dead;
 };
 
 #endif /* ! NIBBLER_HH_ */
